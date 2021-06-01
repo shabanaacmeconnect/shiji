@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    image: "node:14"
+    entrypoint:
+      - "sh"
+      - "-c"
+      - "npm install && ./node_modules/.bin/nodemon server.js"
+    working_dir: "/usr/src/app"
+    ports:
+      - "8074:8074"    
+    volumes:
+      - ".:/usr/src/app"
+      # Don't sync the node_modules directory back to the client.
+      - "/usr/src/app/node_modules"
+ 
